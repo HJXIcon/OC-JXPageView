@@ -275,7 +275,6 @@
     sourceLabel.textColor = [UIColor colorWithR:self.selectRGB[0].floatValue - self.deltaRGB[0].floatValue * progress g:self.selectRGB[1].floatValue - self.deltaRGB[1].floatValue * progress b:self.selectRGB[2].floatValue - self.deltaRGB[2].floatValue * progress a:1];
     
     targetLabel.textColor = [UIColor colorWithR:self.nomalRGB[0].floatValue + self.deltaRGB[0].floatValue * progress g:self.nomalRGB[1].floatValue + self.deltaRGB[1].floatValue * progress b:self.nomalRGB[2].floatValue + self.deltaRGB[2].floatValue * progress a:1];
-    NSLog(@"progress == %f",progress);
     
     
     // 3.调整底部滑动条(width和x)
