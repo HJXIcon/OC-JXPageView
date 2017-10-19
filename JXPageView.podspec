@@ -8,7 +8,7 @@ s.homepage     = "https://github.com/HJXIcon/OC-JXPageView"
 
 s.license      = "MIT"
 
-s.author       = { "HJXIcon" => "x1248399884@163.com" }
+s.author       = { "HJX" => "x1248399884@163.com" }
 
 s.platform     = :ios
 s.platform     = :ios, "8.0"
