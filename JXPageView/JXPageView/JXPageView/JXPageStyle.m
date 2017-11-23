@@ -25,6 +25,7 @@
         self.bottomLineColor = [UIColor blueColor];
         self.isNeedScale = YES;
         self.maxScaleRang = 1.2;
+        self.multilineEnable = NO;
         
     }
     return self;

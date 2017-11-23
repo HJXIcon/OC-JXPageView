@@ -34,5 +34,7 @@
 @property (nonatomic, assign)BOOL isNeedScale;
 /** 最大缩放程度*/
 @property (nonatomic, assign)CGFloat maxScaleRang;
+/** 标题是否支持多行 */
+@property (nonatomic, assign) BOOL multilineEnable; // default NO
 
 @end

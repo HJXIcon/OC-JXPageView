@@ -126,7 +126,8 @@
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = i == 0 ? self.style.selectColor : self.style.normalColor;
         label.font = self.style.titleFont;
-        
+        if (self.style.multilineEnable) label.numberOfLines = 0;
+            
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(titleLabelClick:)];
         [label addGestureRecognizer:tap];
         

@@ -20,11 +20,13 @@
     
     self.automaticallyAdjustsScrollViewInsets = false;
     
-    NSArray *titles = @[@"适合",@"十二班",@"的华",@"推荐爱推荐爱",@"人丹33",@"适合",@"十二班",@"的华"];
+    NSArray *titles = @[@"适合",@"十二班",@"的华",@"推荐爱推荐爱\n酒店",@"人丹33",@"适合",@"十二班",@"的华"];
     JXPageStyle *style = [[JXPageStyle alloc]init];
     
-    style.isScrollEnable = NO;
+    style.isScrollEnable = YES;
     style.isShowBottomLine = YES;
+    style.multilineEnable = YES;
+    style.titleHeight = 60;
     
     NSMutableArray *childVcs = [NSMutableArray array];
     
