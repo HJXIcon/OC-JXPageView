@@ -22,5 +22,10 @@
 
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray <NSString *>*)titles style:(JXPageStyle *)style;
 
-
+/**
+ 给外界提供的方法
+ 
+ @param index 选中下标
+ */
+- (void)setPageTitleViewCurrentIndex:(int)index;
 @end

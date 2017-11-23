@@ -57,13 +57,15 @@
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
         _collectionView = [[UICollectionView alloc]initWithFrame:self.bounds collectionViewLayout:layout];
-        
+        _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.opaque = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
         _collectionView.pagingEnabled = YES;
         _collectionView.bounces = NO;
         _collectionView.scrollsToTop = NO;
+        _collectionView.showsHorizontalScrollIndicator = NO;
         
         
     }
@@ -71,7 +73,7 @@
 }
 
 
-#pragma mark - 
+#pragma mark - UI
 - (void)setup{
     startOffsetX = 0;
     isForbidDelegate = NO;
@@ -89,6 +91,8 @@
     [self addSubview:self.collectionView];
 }
 
+
+#pragma mark - Private Method
 /// 停止滚动
 - (void)scrollViewDidEndScroll{
     int index = self.collectionView.contentOffset.x / self.collectionView.bounds.size.width;
@@ -97,9 +101,6 @@
         [self.delegate pageContentView:self didEndScroll:index];
     }
 }
-
-///
-
 
 
 #pragma mark - <UICollectionViewDataSource>
@@ -117,8 +118,8 @@
     }
     
     // 2.添加view
-    UIViewController *vc = self.childVcs[indexPath.row];
-    vc.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.collectionView.frame), CGRectGetHeight(self.collectionView.frame));
+    UIViewController *vc = self.childVcs[indexPath.item];
+    vc.view.frame = cell.contentView.bounds;
     [cell.contentView addSubview:vc.view];
     
     
@@ -151,42 +152,52 @@
 
 /// 拖动的时候调用
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGFloat contentOffsetX = scrollView.contentOffset.x;
+    CGFloat currentOffsetX = scrollView.contentOffset.x;
     
     // 0.判断有没有滑动
-    if (contentOffsetX == startOffsetX || isForbidDelegate) {
+    if (currentOffsetX == startOffsetX || isForbidDelegate) {
         return;
     }
     
-    int sourceIndex = 0;
-    int targetIndex = 0;
+    NSInteger sourceIndex = 0;
+    NSInteger targetIndex = 0;
     CGFloat progress = 0;
     
-     // 1.获取参数
-    CGFloat collectionWidth = self.collectionView.bounds.size.width;
-    if (contentOffsetX > startOffsetX) { // 左滑
-        sourceIndex = contentOffsetX / collectionWidth;
+    // 2、判断是左滑还是右滑
+    CGFloat scrollViewW = scrollView.bounds.size.width;
+    if (currentOffsetX > startOffsetX) { // 左滑
+        // 1、计算 progress
+        progress = currentOffsetX / scrollViewW - floor(currentOffsetX / scrollViewW);
+        // 2、计算 originalIndex
+        sourceIndex = currentOffsetX / scrollViewW;
+        // 3、计算 targetIndex
         targetIndex = sourceIndex + 1;
         
         // 越界
         if (targetIndex >= self.childVcs.count) {
-            targetIndex = (int)self.childVcs.count - 1;
+            progress = 1;
+            targetIndex = self.childVcs.count - 1;
         }
-        
-        progress = (contentOffsetX - startOffsetX) / collectionWidth;
-        
-        /// 刚好一个屏幕的时候(什么时候停止)
-        if ((contentOffsetX - startOffsetX) == collectionWidth) {
+        // 4、刚好一个屏幕的时候(如果完全划过去)
+        if (currentOffsetX - startOffsetX == scrollViewW) {
+            progress = 1;
             targetIndex = sourceIndex;
         }
-        
-        
-    }else{ // 右滑
-        
-        targetIndex = contentOffsetX / collectionWidth;
+    } else { // 右滑
+        // 1、计算 progress
+        progress = 1 - (currentOffsetX / scrollViewW - floor(currentOffsetX / scrollViewW));
+        // 2、计算 targetIndex
+        targetIndex = currentOffsetX / scrollViewW;
+        // 3、计算 sourceIndex
         sourceIndex = targetIndex + 1;
-        progress = (startOffsetX - contentOffsetX) / collectionWidth;
+        
+        // 越界
+        if (sourceIndex >= self.childVcs.count) {
+            sourceIndex = self.childVcs.count - 1;
+        }
     }
+    
+    
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(pageContentView:sourceIndex:targetIndex:progress:)]) {
         [self.delegate pageContentView:self sourceIndex:sourceIndex targetIndex:targetIndex progress:progress];
@@ -221,5 +232,11 @@
     
 }
 
+
+#pragma mark - *** setter
+- (void)setIsScrollEnabled:(BOOL)isScrollEnabled{
+    _isScrollEnabled = isScrollEnabled;
+    self.collectionView.scrollEnabled = isScrollEnabled;
+}
 
 @end

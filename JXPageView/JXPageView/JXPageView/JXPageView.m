@@ -7,9 +7,15 @@
 //
 
 #import "JXPageView.h"
+#ifdef DEBUG
+#define JXLog(format,...)  NSLog((@"[函数名:%s]\n" "[行号:%d]\n" format),__FUNCTION__,__LINE__,##__VA_ARGS__)
+#else
+#define JXLog(...)
+#endif
 
 @interface JXPageView ()
 
+@property (nonatomic, weak) JXTitleView *titleView;
 @end
 @implementation JXPageView
 
@@ -49,12 +55,14 @@
     CGRect titleFrame = CGRectMake(0, 0, self.bounds.size.width, self.style.titleHeight);
     
     JXTitleView *titleView = [[JXTitleView alloc]initWithFrame:titleFrame titles:self.titles style:self.style];
+    self.titleView = titleView;
     titleView.backgroundColor = [UIColor ColorWithHexString:@"##FF6528"];
     [self addSubview:titleView];
     
     // 2.创建contentView
     CGRect contentViewFram = CGRectMake(0, CGRectGetMaxY(titleView.frame), self.bounds.size.width, self.bounds.size.height - CGRectGetMaxY(titleView.frame));
     JXPageContentView *contentView = [[JXPageContentView alloc]initWithFrame:contentViewFram childVcs:self.childVcs parentVc:self.parentVc];
+    contentView.isScrollEnabled = self.style.contentViewIsScrollEnabled;
     [self addSubview:contentView];
     
     // 3.让titleView跟contentView沟通
@@ -65,7 +73,17 @@
     
 }
 
+#pragma mark - Public Method
+/**
+ 给外界提供的方法
+ 
+ @param currentIndex 选中下标
+ */
+- (void)setPageViewCurrentIndex:(int)currentIndex{
+    [self.titleView setPageTitleViewCurrentIndex:currentIndex];
+}
+
 - (void)dealloc{
-    NSLog(@"JXPageView -- dealloc");
+    JXLog(@"JXPageView -- dealloc");
 }
 @end

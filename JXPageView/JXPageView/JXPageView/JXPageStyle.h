@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface JXPageStyle : NSObject
-
-
+/// >>>>>> Title
+#pragma mark - *** Title
 /** 标题View的高度*/
 @property (nonatomic, assign)CGFloat titleHeight;
 /** 文本普通颜色*/
@@ -25,10 +25,9 @@
 @property (nonatomic, assign)BOOL isShowBottomLine;
 /** 标题间距*/
 @property (nonatomic, assign)CGFloat titleMargin;
-
-/** 滑动条颜色*/
+/** 底部滑动条颜色*/
 @property (nonatomic, strong)UIColor *bottomLineColor;
-/** 滑动条高度*/
+/** 底部滑动条高度*/
 @property (nonatomic, assign)CGFloat bottomLineHeight;
 /** 是否缩放*/
 @property (nonatomic, assign)BOOL isNeedScale;
@@ -36,5 +35,20 @@
 @property (nonatomic, assign)CGFloat maxScaleRang;
 /** 标题是否支持多行 */
 @property (nonatomic, assign) BOOL multilineEnable; // default NO
+
+/// >>>>>> SeparatorLine
+#pragma mark - *** SeparatorLine
+/** 标题直接是否有分割线 */
+@property (nonatomic, assign) BOOL isShowSeparatorLine; // default NO
+/** 分割线颜色 */
+@property (nonatomic, strong) UIColor *separatorLineColor;
+/** 分割线size */
+@property (nonatomic, assign) CGSize separatorLineSize;
+
+
+/// >>>>>> ContentView
+#pragma mark - *** ContentView
+/** ContentView 是否可以滚动 */
+@property (nonatomic, assign) BOOL contentViewIsScrollEnabled; // default YES
 
 @end

@@ -15,8 +15,11 @@
 
 @property(nonatomic, weak) id<JXPageContentViewDelegate>delegate;
 
+/** 是否需要滚动 默认为 YES*/
+@property (nonatomic, assign) BOOL isScrollEnabled;
 
 - (instancetype)initWithFrame:(CGRect)frame childVcs:(NSArray <UIViewController *>*)childVcs parentVc:(UIViewController *)parentVc;
+
 
 
 @end

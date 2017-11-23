@@ -130,7 +130,7 @@
             
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(titleLabelClick:)];
         [label addGestureRecognizer:tap];
-        
+    
         [self.scrollView addSubview:label];
         
         [self.titleLabels addObject:label];
@@ -158,6 +158,28 @@
         self.titleLabels[i].frame = CGRectMake(labelX, labelY, labelW, labelH);
         
         
+        // 是否有分割线
+        if (self.style.isShowSeparatorLine && i > 0) {
+            
+            UILabel *leftLabel = self.titleLabels[i - 1];
+            UILabel *rightLabel = self.titleLabels[i];
+            
+            /// 线的中心
+            CGFloat lineCenterX = CGRectGetMinX(rightLabel.frame) - (CGRectGetMinX(rightLabel.frame) - CGRectGetMaxX(leftLabel.frame)) * 0.5;
+            
+            UIView *line = [[UIView alloc]init];
+            line.backgroundColor = self.style.separatorLineColor;
+            line.frame = CGRectMake(0, (labelH - self.style.separatorLineSize.height) * 0.5, self.style.separatorLineSize.width, self.style.separatorLineSize.height);
+            
+            CGPoint lineCenter = line.center;
+            lineCenter.x = lineCenterX;
+            line.center = lineCenter;
+            
+            [self.scrollView addSubview:line];
+            labelX += self.style.separatorLineSize.width;
+            
+        }
+        
     }
     
     
@@ -175,6 +197,26 @@
     
 }
 
+#pragma mark - Public Method
+/**
+ 给外界提供的方法
+ 
+ @param index 选中下标
+ */
+- (void)setPageTitleViewCurrentIndex:(int)index{
+    
+    UILabel *targetLabel = self.titleLabels[index];
+    
+    //0.判断是不是之前点击的label
+    if (targetLabel.tag == currentIndex) {
+        return;
+    }
+    
+    // 1.调整targetLabel
+    [self adjustLabel:targetLabel];
+}
+
+
 
 #pragma mark - tapAction
 - (void)titleLabelClick:(UITapGestureRecognizer *)tap{
@@ -185,22 +227,32 @@
     }
     
     UILabel *targetLabel = (UILabel *)tap.view;
-    
-    //0.判断是不是之前点击的label
+    // 0.判断是不是之前点击的label
     if (targetLabel.tag == currentIndex) {
         return;
     }
     
+    // 1.调整targetLabel
+    [self adjustLabel:targetLabel];
+    
+}
+
+
+/**
+ 调整目标Label
+ */
+- (void)adjustLabel:(UILabel *)targetLabel{
 
     // 1.让之前的label不选中，现在的选中
-    
     UILabel *sourceLabel = self.titleLabels[currentIndex];
     targetLabel.textColor = self.style.selectColor;
     sourceLabel.textColor = self.style.normalColor;
     currentIndex = targetLabel.tag;
-
     
-    if (self.style.isScrollEnable) {
+    
+    /// 是否可以滚动
+    UILabel *lastLabel = self.titleLabels.lastObject;
+    if (self.style.isScrollEnable && CGRectGetMaxX(lastLabel.frame) + self.style.titleMargin * 0.5 > CGRectGetWidth(self.frame)) {
         // 2.调整点击label的位置
         [self adjustLabelPosition];
     }
@@ -232,10 +284,12 @@
             targetLabel.transform = CGAffineTransformMakeScale(self.style.maxScaleRang, self.style.maxScaleRang);
         }];
     }
-    
 }
 
-// 调整点击label的位置
+
+/**
+ 调整点击label的位置
+ */
 - (void)adjustLabelPosition{
     UILabel *targetLabel = self.titleLabels[currentIndex];
     CGFloat offsetX = targetLabel.center.x - self.scrollView.bounds.size.width * 0.5;
@@ -258,7 +312,9 @@
     
     currentIndex = inIndex;
     
-    if (self.style.isScrollEnable) {
+    /// 是否可以滚动
+    UILabel *lastLabel = self.titleLabels.lastObject;
+    if (self.style.isScrollEnable && CGRectGetMaxX(lastLabel.frame) + self.style.titleMargin * 0.5 > CGRectGetWidth(self.frame)) {
         ///调整点击label的位置
         [self adjustLabelPosition];
     }
@@ -266,7 +322,7 @@
     
 }
 
-- (void)pageContentView:(JXPageContentView *)pageContentView sourceIndex:(int)sourceIndex targetIndex:(int)targetIndex progress:(CGFloat)progress{
+- (void)pageContentView:(JXPageContentView *)pageContentView sourceIndex:(NSInteger)sourceIndex targetIndex:(NSInteger)targetIndex progress:(CGFloat)progress{
     
     // 1
     UILabel *sourceLabel = self.titleLabels[sourceIndex];

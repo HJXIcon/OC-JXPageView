@@ -26,4 +26,11 @@
                         style:(JXPageStyle *)style
                      childVcs:(NSArray <UIViewController *>*)childVcs
                      parentVc:(UIViewController *)parentVc;
+
+/**
+ 给外界提供的方法
+ 
+ @param currentIndex 选中下标
+ */
+- (void)setPageViewCurrentIndex:(int)currentIndex;
 @end

@@ -12,7 +12,7 @@
 
 - (void)pageContentView:(JXPageContentView *)pageContentView didEndScroll:(int)inIndex;
 
-- (void)pageContentView:(JXPageContentView *)pageContentView sourceIndex:(int)sourceIndex targetIndex:(int)targetIndex progress:(CGFloat)progress;
+- (void)pageContentView:(JXPageContentView *)pageContentView sourceIndex:(NSInteger)sourceIndex targetIndex:(NSInteger)targetIndex progress:(CGFloat)progress;
 
 @end
 

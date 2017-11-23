@@ -27,7 +27,21 @@
         self.maxScaleRang = 1.2;
         self.multilineEnable = NO;
         
+        self.isShowSeparatorLine = NO;
+        self.separatorLineColor = [UIColor whiteColor];
+        
+        self.contentViewIsScrollEnabled = YES;
+        
     }
     return self;
 }
+
+- (CGSize)separatorLineSize{
+    if (_separatorLineSize.height == 0 || _separatorLineSize.width == 0) {
+        return CGSizeMake(1, self.titleHeight);
+    }
+    return _separatorLineSize;
+}
+
+
 @end

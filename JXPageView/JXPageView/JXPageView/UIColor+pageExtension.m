@@ -82,21 +82,21 @@
  */
 - (NSArray <NSNumber *> *)getNomalRGB{
  
+    
     CGFloat R, G, B;
     NSUInteger num = CGColorGetNumberOfComponents(self.CGColor);
-    
+
     if (num <= 0) {
-        
+
          @throw [NSException exceptionWithName:@"JXError" reason:@"请确定带颜色是通过RGB创建的" userInfo:nil];
     }
-    
-    
+
     const CGFloat *components = CGColorGetComponents(self.CGColor);
     R = components[0] * 255;
     G = components[1] * 255;
     B = components[2] * 255;
-    
-    
+
+
     return @[@(R),@(G),@(B)];
     
 }

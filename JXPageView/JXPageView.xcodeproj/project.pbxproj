@@ -148,6 +148,7 @@
 				TargetAttributes = {
 					82DB3AD31F989581009B32E4 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 7TM5A6A2L6;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -318,9 +319,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7TM5A6A2L6;
 				INFOPLIST_FILE = JXPageView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JXPageView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JXPageView.icon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -329,9 +332,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7TM5A6A2L6;
 				INFOPLIST_FILE = JXPageView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JXPageView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JXPageView.icon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -355,6 +360,7 @@
 				82DB3AED1F989581009B32E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
