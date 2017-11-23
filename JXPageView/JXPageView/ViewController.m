@@ -41,6 +41,7 @@
     style.separatorLineSize = CGSizeMake(1, 44);
     style.separatorLineColor = [UIColor blueColor];
 //    style.contentViewIsScrollEnabled = NO;
+    style.titleGradientEffectEnable = NO;
     
     NSMutableArray *childVcs = [NSMutableArray array];
     

@@ -35,6 +35,9 @@
 @property (nonatomic, assign)CGFloat maxScaleRang;
 /** 标题是否支持多行 */
 @property (nonatomic, assign) BOOL multilineEnable; // default NO
+/** 是否让标题按钮文字有渐变效果，默认为 YES */
+@property (nonatomic, assign) BOOL titleGradientEffectEnable;
+
 
 /// >>>>>> SeparatorLine
 #pragma mark - *** SeparatorLine

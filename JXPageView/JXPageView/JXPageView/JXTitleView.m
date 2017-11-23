@@ -329,9 +329,24 @@
     UILabel *targetLabel = self.titleLabels[targetIndex];
     
     // 2.颜色渐变
-    sourceLabel.textColor = [UIColor colorWithR:self.selectRGB[0].floatValue - self.deltaRGB[0].floatValue * progress g:self.selectRGB[1].floatValue - self.deltaRGB[1].floatValue * progress b:self.selectRGB[2].floatValue - self.deltaRGB[2].floatValue * progress a:1];
+    if (self.style.titleGradientEffectEnable) { // 需要颜色渐变
+        
+        sourceLabel.textColor = [UIColor colorWithR:self.selectRGB[0].floatValue - self.deltaRGB[0].floatValue * progress g:self.selectRGB[1].floatValue - self.deltaRGB[1].floatValue * progress b:self.selectRGB[2].floatValue - self.deltaRGB[2].floatValue * progress a:1];
+        
+        targetLabel.textColor = [UIColor colorWithR:self.nomalRGB[0].floatValue + self.deltaRGB[0].floatValue * progress g:self.nomalRGB[1].floatValue + self.deltaRGB[1].floatValue * progress b:self.nomalRGB[2].floatValue + self.deltaRGB[2].floatValue * progress a:1];
+    }
+    else{ // 不需要颜色渐变
+        
+        if (progress > 0.5) {
+            sourceLabel.textColor = self.style.normalColor;
+            targetLabel.textColor = self.style.selectColor;
+        }else{
+            sourceLabel.textColor = self.style.selectColor;
+            targetLabel.textColor = self.style.normalColor;
+        }
+    }
     
-    targetLabel.textColor = [UIColor colorWithR:self.nomalRGB[0].floatValue + self.deltaRGB[0].floatValue * progress g:self.nomalRGB[1].floatValue + self.deltaRGB[1].floatValue * progress b:self.nomalRGB[2].floatValue + self.deltaRGB[2].floatValue * progress a:1];
+   
     
     
     // 3.调整底部滑动条(width和x)

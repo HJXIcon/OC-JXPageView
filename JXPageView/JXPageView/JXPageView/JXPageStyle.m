@@ -26,11 +26,13 @@
         self.isNeedScale = YES;
         self.maxScaleRang = 1.2;
         self.multilineEnable = NO;
+        self.titleGradientEffectEnable = YES;
         
         self.isShowSeparatorLine = NO;
         self.separatorLineColor = [UIColor whiteColor];
         
         self.contentViewIsScrollEnabled = YES;
+        
         
     }
     return self;
