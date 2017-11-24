@@ -11,6 +11,8 @@
 @interface JXPageStyle : NSObject
 /// >>>>>> Title
 #pragma mark - *** Title
+/** 标题View的背景颜色*/
+@property (nonatomic, strong) UIColor *titeViewBackgroundColor;
 /** 标题View的高度*/
 @property (nonatomic, assign)CGFloat titleHeight;
 /** 文本普通颜色*/

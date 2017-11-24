@@ -14,6 +14,7 @@
 - (instancetype)init{
     
     if (self = [super init]) {
+        self.titeViewBackgroundColor = [UIColor whiteColor];
         self.titleHeight = 44;
         self.normalColor = [UIColor colorWithR:255 g:255 b:255 a:1];
         self.selectColor = [UIColor colorWithR:176 g:22 b:22 a:1];

@@ -56,7 +56,7 @@
     
     JXTitleView *titleView = [[JXTitleView alloc]initWithFrame:titleFrame titles:self.titles style:self.style];
     self.titleView = titleView;
-    titleView.backgroundColor = [UIColor ColorWithHexString:@"##FF6528"];
+    titleView.backgroundColor = self.style.titeViewBackgroundColor;
     [self addSubview:titleView];
     
     // 2.创建contentView
