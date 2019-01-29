@@ -13,7 +13,7 @@
 
 @interface JXTitleView : UIView<JXPageContentViewDelegate>
 
-@property(nonatomic, strong) NSArray <NSString *>*titles;
+@property(nonatomic, copy) NSArray <NSString *>*titles;
 @property(nonatomic, strong) JXPageStyle *style;
 
 

@@ -69,26 +69,20 @@
 }
 
 #pragma mark - init
-- (instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        [self setupUI];
-    }
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder{
-    if (self = [super initWithCoder:aDecoder]) {
-        [self setupUI];
-    }
-    return self;
-}
-
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray <NSString *>*)titles style:(JXPageStyle *)style{
     
     self.titles = titles;
     self.style = style;
     return [self initWithFrame:frame];
 }
+
+- (void)willMoveToSuperview:(UIView *)newSuperview{
+    [super willMoveToSuperview:newSuperview];
+    if (newSuperview) {
+        [self setupUI];
+    }
+}
+
 
 #pragma mark - UI
 - (void)setupUI{

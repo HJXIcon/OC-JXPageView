@@ -10,7 +10,7 @@
 #import "JXPageViewProtocol.h"
 
 @interface JXPageContentView : UIView<JXTitleViewDelegate>
-@property(nonatomic, strong)NSArray <UIViewController *>*childVcs;
+@property(nonatomic, copy)NSArray <UIViewController *>*childVcs;
 @property(nonatomic, weak)UIViewController *parentVc;
 
 @property(nonatomic, weak) id<JXPageContentViewDelegate>delegate;

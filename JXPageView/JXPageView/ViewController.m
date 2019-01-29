@@ -57,8 +57,17 @@
     
     CGRect pageViewFrame = CGRectMake(0, E_StatusBarAndNavigationBarHeight, self.view.bounds.size.width, self.view.bounds.size.height - E_StatusBarAndNavigationBarHeight);
     
-    JXPageView *pageView = [[JXPageView alloc]initWithFrame:pageViewFrame titles:titles style:style childVcs:childVcs parentVc:self];
+    /// 创建方式一
+//    JXPageView *pageView = [[JXPageView alloc]initWithFrame:pageViewFrame titles:titles style:style childVcs:childVcs parentVc:self];
     
+    
+    /// 创建方式二
+    JXPageView *pageView = [[JXPageView alloc]init];
+    pageView.titles = titles;
+    pageView.style = style;
+    pageView.frame = pageViewFrame;
+    pageView.childVcs = childVcs;
+    pageView.parentVc = self;
     self.pageView = pageView;
     
     [self.view addSubview:pageView];

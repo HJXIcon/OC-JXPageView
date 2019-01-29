@@ -14,12 +14,14 @@
 
 @interface JXPageView : UIView
 
-@property(nonatomic, strong) NSArray <NSString *>*titles;
-@property(nonatomic, strong) JXPageStyle *style;
-@property(nonatomic, strong) NSArray <UIViewController *>*childVcs;
+///////// ------------------- 必须有值 ---------------------------------
+@property(nonatomic, copy) NSArray <NSString *>*titles;
+@property(nonatomic, copy) NSArray <UIViewController *>*childVcs;
 // 注意使用weak，否则造成循环引用
 @property(nonatomic, weak) UIViewController *parentVc;
+///////// ------------------- 必须有值 ---------------------------------
 
+@property(nonatomic, strong) JXPageStyle *style;
 
 - (instancetype)initWithFrame:(CGRect)frame
                        titles:(NSArray <NSString *>*)titles

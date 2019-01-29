@@ -20,21 +20,6 @@
 @implementation JXPageView
 
 #pragma mark - init
-
-- (instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        [self setupUI];
-    }
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder{
-    if (self = [super initWithCoder:aDecoder]) {
-        [self setupUI];
-    }
-    return self;
-}
-
 - (instancetype)initWithFrame:(CGRect)frame
                        titles:(NSArray <NSString *>*)titles
                         style:(JXPageStyle *)style
@@ -47,6 +32,16 @@
     self.parentVc = parentVc;
     
     return [self initWithFrame:frame];
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview{
+    [super willMoveToSuperview:newSuperview];
+    if (newSuperview) {
+        NSAssert(self.childVcs.count>0, @"JXPageView's childVcs must be not nil");
+        NSAssert(self.titles.count>0, @"JXPageView's titles must be not nil");
+        NSAssert(self.parentVc, @"JXPageView's parentVc must be not nil");
+        [self setupUI];
+    }
 }
 
 
