@@ -81,8 +81,12 @@
     
     // 2.添加collectionView
     [self addSubview:self.collectionView];
+    if (@available(iOS 11.0, *)) {
+        if (self.adjustsScrollViewInsetsNO) {
+            self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+    }
 }
-
 
 #pragma mark - Private Method
 /// 停止滚动

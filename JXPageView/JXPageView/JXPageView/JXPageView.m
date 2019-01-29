@@ -51,6 +51,9 @@
     
     JXTitleView *titleView = [[JXTitleView alloc]initWithFrame:titleFrame titles:self.titles style:self.style];
     self.titleView = titleView;
+    if (@available(iOS 11.0, *)) {
+        titleView.adjustsScrollViewInsetsNO = self.style.adjustsScrollViewInsetsNO;
+    }
     titleView.backgroundColor = self.style.titeViewBackgroundColor;
     [self addSubview:titleView];
     
@@ -58,6 +61,9 @@
     CGRect contentViewFram = CGRectMake(0, CGRectGetMaxY(titleView.frame), self.bounds.size.width, self.bounds.size.height - CGRectGetMaxY(titleView.frame));
     JXPageContentView *contentView = [[JXPageContentView alloc]initWithFrame:contentViewFram childVcs:self.childVcs parentVc:self.parentVc];
     contentView.isScrollEnabled = self.style.contentViewIsScrollEnabled;
+    if (@available(iOS 11.0, *)) {
+        contentView.adjustsScrollViewInsetsNO = self.style.adjustsScrollViewInsetsNO;
+    }
     [self addSubview:contentView];
     
     // 3.让titleView跟contentView沟通

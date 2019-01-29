@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "JXPageView.h"
+#import "TableViewController.h"
 
 /// 底部宏，吃一见长一智吧，别写数字了
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
@@ -30,7 +31,6 @@
     
     NSArray *titles = @[@"适合",@"十二班",@"的华",@"推荐爱推荐爱\n酒店",@"人丹33",@"适合",@"十二班",@"的华"];
     JXPageStyle *style = [[JXPageStyle alloc]init];
-    
     style.titleFont = [UIFont systemFontOfSize:18];
     style.isScrollEnable = YES;
     style.isShowBottomLine = YES;
@@ -49,7 +49,7 @@
     NSMutableArray *childVcs = [NSMutableArray array];
     
     for (int i = 0; i < titles.count; i++){
-        UIViewController *vc = [[UIViewController alloc]init];
+        TableViewController *vc = [[TableViewController alloc]init];
         vc.view.backgroundColor = [UIColor randomColor];
         
         [childVcs addObject:vc];

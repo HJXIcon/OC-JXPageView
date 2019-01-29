@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
 @interface JXPageStyle : NSObject
 /// >>>>>> Title
 #pragma mark - *** Title
@@ -55,5 +56,8 @@
 #pragma mark - *** ContentView
 /** ContentView 是否可以滚动 */
 @property (nonatomic, assign) BOOL contentViewIsScrollEnabled; // default YES
+
+/// iOS 11之后 类似automaticallyAdjustsScrollViewInsets == NO 需要设置为YES
+@property (nonatomic, assign) BOOL adjustsScrollViewInsetsNO API_AVAILABLE(ios(11.0),tvos(11.0));
 
 @end

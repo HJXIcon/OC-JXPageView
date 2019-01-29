@@ -18,6 +18,8 @@
 /** 是否需要滚动 默认为 YES*/
 @property (nonatomic, assign) BOOL isScrollEnabled;
 
+@property (nonatomic, assign) BOOL adjustsScrollViewInsetsNO API_AVAILABLE(ios(11.0),tvos(11.0));
+
 - (instancetype)initWithFrame:(CGRect)frame childVcs:(NSArray <UIViewController *>*)childVcs parentVc:(UIViewController *)parentVc;
 
 

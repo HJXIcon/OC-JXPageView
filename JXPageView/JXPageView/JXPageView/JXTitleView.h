@@ -15,8 +15,7 @@
 
 @property(nonatomic, copy) NSArray <NSString *>*titles;
 @property(nonatomic, strong) JXPageStyle *style;
-
-
+@property (nonatomic, assign) BOOL adjustsScrollViewInsetsNO API_AVAILABLE(ios(11.0),tvos(11.0));
 /** delegate*/
 @property (nonatomic, weak)id<JXTitleViewDelegate> delegate;
 

@@ -19,6 +19,7 @@
 		82DB3AFD1F989617009B32E4 /* JXTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DB3AF71F989617009B32E4 /* JXTitleView.m */; };
 		82DB3AFE1F989617009B32E4 /* UIColor+pageExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DB3AF91F989617009B32E4 /* UIColor+pageExtension.m */; };
 		82DB3B001F989836009B32E4 /* JXPageView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 82DB3AFF1F989836009B32E4 /* JXPageView.gif */; };
+		841CEBCF220041790030B0D3 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841CEBCE220041790030B0D3 /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		82DB3AF81F989617009B32E4 /* UIColor+pageExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+pageExtension.h"; sourceTree = "<group>"; };
 		82DB3AF91F989617009B32E4 /* UIColor+pageExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+pageExtension.m"; sourceTree = "<group>"; };
 		82DB3AFF1F989836009B32E4 /* JXPageView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = JXPageView.gif; sourceTree = "<group>"; };
+		841CEBCD220041790030B0D3 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		841CEBCE220041790030B0D3 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 				82DB3ADB1F989581009B32E4 /* AppDelegate.m */,
 				82DB3ADD1F989581009B32E4 /* ViewController.h */,
 				82DB3ADE1F989581009B32E4 /* ViewController.m */,
+				841CEBCD220041790030B0D3 /* TableViewController.h */,
+				841CEBCE220041790030B0D3 /* TableViewController.m */,
 				82DB3AE01F989581009B32E4 /* Main.storyboard */,
 				82DB3AE31F989581009B32E4 /* Assets.xcassets */,
 				82DB3AE51F989581009B32E4 /* LaunchScreen.storyboard */,
@@ -194,6 +199,7 @@
 				82DB3AFB1F989617009B32E4 /* JXPageStyle.m in Sources */,
 				82DB3ADF1F989581009B32E4 /* ViewController.m in Sources */,
 				82DB3ADC1F989581009B32E4 /* AppDelegate.m in Sources */,
+				841CEBCF220041790030B0D3 /* TableViewController.m in Sources */,
 				82DB3AFE1F989617009B32E4 /* UIColor+pageExtension.m in Sources */,
 				82DB3AFC1F989617009B32E4 /* JXPageView.m in Sources */,
 				82DB3AD91F989581009B32E4 /* main.m in Sources */,

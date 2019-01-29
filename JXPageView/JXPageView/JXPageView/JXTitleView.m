@@ -90,6 +90,11 @@
     
     // 1.添加ScrollView
     [self addSubview:self.scrollView];
+    if (@available(iOS 11.0, *)) {
+        if (self.adjustsScrollViewInsetsNO) {
+            self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } 
+    }
     
     // 2.添加Lable
     [self setupTitlesLabel];
